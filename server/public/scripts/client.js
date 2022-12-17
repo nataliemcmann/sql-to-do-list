@@ -47,5 +47,4 @@ function removeTime(SQLdate){
         newDate += SQLdate[i];
     }
     return newDate;
-}
-//find a way to make the date look nicer 
+} //find a way to make the date look nicer 

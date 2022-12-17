@@ -24,6 +24,25 @@ taskRouter.get('/', (req,res)=> {
 
 
 // POST //
+taskRouter.post('/', (req,res) => {
+    console.log('in POST route');
+    let sqlQuery = `
+    INSERT INTO "tasks"
+    ("date", "freq", "task", "complete")
+    VALUES
+    ($1, $2, $3, 'N'); 
+    ` //complete is assumed to be no upon task entry
+    let task = req.body;
+    let sqlValues = [task.date, task.freq, task.task];
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes)=> {
+        res.sendStatus(201);
+    })
+    .catch((dbErr)=>{
+        console.log('error in POST route');
+        res.sendStatus(500);
+    })
+})
 
 // PUT //
 
