@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 //import taskRouter
 const taskRouter = require('./router/taskRouter')
 //import pool
-const pool = require('./module/pool.js');
+const pool = require('./modules/pool.js');
 
 //make express server
 const app = express();
