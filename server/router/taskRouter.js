@@ -30,10 +30,10 @@ taskRouter.post('/', (req,res) => {
     INSERT INTO "tasks"
     ("date", "freq", "task", "complete")
     VALUES
-    ($1, $2, $3, 'N'); 
+    ($1, $2, $3, $4); 
     ` //complete is assumed to be no upon task entry
     let task = req.body;
-    let sqlValues = [task.date, task.freq, task.task];
+    let sqlValues = [task.date, task.freq, task.task, task.complete];
     pool.query(sqlQuery, sqlValues)
     .then((dbRes)=> {
         res.sendStatus(201);

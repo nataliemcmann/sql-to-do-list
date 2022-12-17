@@ -8,6 +8,7 @@ $(document).ready(onReady)
 function onReady(){
     // console.log('GO!');
     getAndRenderTasks();
+    $('#taskSubmit').on('click', postTask);
 }
 
 //get request
@@ -21,7 +22,7 @@ function getAndRenderTasks(){
         renderTasks(res);
     })
     .catch((err) => {
-        console.log('GET http request could not be completed', err);
+        console.log('GET http request failed', err);
     })
 }
 
@@ -38,6 +39,36 @@ function renderTasks(array){
         </tr>
         `)
     }
+}
+
+//make new task object from input fields
+function createNewTask(){
+    let newTask = {
+        date: $('#dateInput').val(),
+        freq: $('#freqInput').val(),
+        task: $('#discInput').val(),
+        complete: 'N'
+    };
+    return newTask;
+}
+
+//post new task to server then re-render DOM
+function postTask(){
+    console.log('posting to server');
+    let newTask = createNewTask();
+    // console.log(newTask);
+    $.ajax({
+        method: 'POST',
+        url: '/tasks',
+        data: newTask
+    })
+    .then((res) => {
+        console.log(res);
+        getAndRenderTasks();
+    })
+    .catch((err) => {
+        console.log('POST http request failed', err);
+    })
 }
 
 //reformat sql date function 
