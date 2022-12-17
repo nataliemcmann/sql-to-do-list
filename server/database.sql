@@ -13,10 +13,12 @@ INSERT INTO "tasks"
     VALUES
     ('12-17-2022', 'daily', 'feed dog AM', 'Y'),
     ('12-17-2022', 'daily', 'walk dog', 'N'),
-    ('12-17-2022', 'weekly', 'trim dogs nails', 'N'),
+    ('12-18-2022', 'weekly', 'trim dogs nails', 'N'),
     ('12-17-2022', 'daily', 'feed dog PM', 'N');
---select all to render (GET)
 
+--select all to render (GET)
+SELECT * FROM "tasks"
+    ORDER BY "date" ASC;
 --input user data (POST)
 
 --update by id (PUT)
