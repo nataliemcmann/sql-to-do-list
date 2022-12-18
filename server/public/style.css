@@ -27,6 +27,8 @@ header {
 
 h1{
     display: inline-block;
+    font-family: Honeycomb Happiness; 
+    font-size: 4em;
 }
 
 #inputs {
