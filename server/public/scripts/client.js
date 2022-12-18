@@ -62,6 +62,7 @@ function createNewTask(){
 function postTask(){
     console.log('posting to server');
     let newTask = createNewTask();
+    clearInputs();
     // console.log(newTask);
     $.ajax({
         method: 'POST',
@@ -134,3 +135,10 @@ function removeTime(SQLdate){
     }
     return newDate;
 } //find a way to make the date look nicer 
+
+//clear inputs
+function clearInputs(){
+    $('#dateInput').val('');
+    $('#freqInput').val('');
+    $('#discInput').val('');
+}
