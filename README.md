@@ -26,5 +26,10 @@ jQuery should manage the event delegation of rendering and buttons features
 jQuery should also make get, post, put, and delete requests to the server
 Logic in the client.js should determine style classes of data
 
+###Stretch Goals
+-Used branching before attempting each stretch goal.
+-First stretch goal, use bootstrap to change style and allow display on mobile (could not confirm that it will work on mobile). Themed the to-do app with bees.
+-Second stretch goal was to capture the time completed. Achieved.
+
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
