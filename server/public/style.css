@@ -62,10 +62,10 @@ tbody, td{
 }
 
 .to-do-task {
-    background-color: #f3e2eb;
+    background-color: #ffd400;
 }
 
 .finished-task {
-    background-color: #ecfee8;
+    background-color: white;
 }
 
