@@ -3,7 +3,8 @@
 } */
 body {
     margin: 0;
-    background-color: #ced4da;
+    background-color: #fcefb4;
+    text-align: center;
 }
 
 .sprite {
@@ -32,12 +33,22 @@ h1{
     margin: 2%;
 }
 
+.userInputs {
+background: rgb(253,227,33);
+background: linear-gradient(90deg,
+rgba(253,227,33,1) 0%, 
+rgba(247,235,145,1) 28%, 
+rgba(244,244,244,1) 75%);
+}
+
 #discInput {
     width: 30%;
 }
 
 table {
-    margin: 2%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 thead, th {
