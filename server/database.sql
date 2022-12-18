@@ -18,7 +18,7 @@ INSERT INTO "tasks"
 
 --select all to render (GET)
 SELECT * FROM "tasks"
-    ORDER BY "date" ASC;
+    ORDER BY "complete" ASC, "date" ASC;
 
 --input user data (POST)
 INSERT INTO "tasks"
