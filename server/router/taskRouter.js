@@ -28,12 +28,12 @@ taskRouter.post('/', (req,res) => {
     console.log('in POST route');
     let sqlQuery = `
     INSERT INTO "tasks"
-    ("date", "freq", "task", "complete")
+    ("date", "task", "complete")
     VALUES
-    ($1, $2, $3, $4); 
+    ($1, $2, $3); 
     ` //complete is assumed to be no upon task entry
     let task = req.body;
-    let sqlValues = [task.date, task.freq, task.task, task.complete];
+    let sqlValues = [task.date, task.task, task.complete];
     pool.query(sqlQuery, sqlValues)
     .then((dbRes)=> {
         res.sendStatus(201);

@@ -36,7 +36,6 @@ function renderTasks(array){
         $('#taskList').append(`
         <tr ${conditionallyAddTaskClass(item)} data-id=${item.id}>
             <td class="border border-dark">${removeTime(item.date)}</td>
-            <td class="border border-dark">${item.freq}</td>
             <td class="border border-dark">${item.task}</td>
             <td class="border border-dark">${item.complete}</td>
             <td class="border border-dark"><button 
@@ -53,7 +52,6 @@ function renderTasks(array){
 function createNewTask(){
     let newTask = {
         date: $('#dateInput').val(),
-        freq: $('#freqInput').val(),
         task: $('#discInput').val(),
         complete: 'N'
     };
@@ -150,7 +148,6 @@ function removeTime(SQLdate){
 //clear inputs
 function clearInputs(){
     $('#dateInput').val('');
-    $('#freqInput').val('');
     $('#discInput').val('');
 }
 
