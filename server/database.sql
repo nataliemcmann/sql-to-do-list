@@ -9,9 +9,9 @@ CREATE TABLE "tasks" (
 
 --input test data
 INSERT INTO "tasks" 
-    ("date", "freq", "task", "complete")
+    ("date", "freq", "task", "complete", "date_completed")
     VALUES
-    ('12-17-2022', 'daily', 'feed dog AM', 'Y'),
+    ('12-17-2022', 'daily', 'feed dog AM', 'Y', '12-17-2022'),
     ('12-17-2022', 'daily', 'walk dog', 'N'),
     ('12-18-2022', 'weekly', 'trim dogs nails', 'N'),
     ('12-17-2022', 'daily', 'feed dog PM', 'N');

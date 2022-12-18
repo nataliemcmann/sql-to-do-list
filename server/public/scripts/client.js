@@ -32,6 +32,7 @@ function getAndRenderTasks(){
 function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
+        // console.log(removeTime(item.date_completed));
         $('#taskList').append(`
         <tr ${conditionallyAddTaskClass(item)} data-id=${item.id}>
             <td class="border border-dark">${removeTime(item.date)}</td>
@@ -41,6 +42,7 @@ function renderTasks(array){
             <td class="border border-dark"><button 
             class="markComplete rounded-circle btn btn-success" ${disableIfComplete(item)}>
             ✓ </button></td>
+            <td class="border border-dark">${removeTime(item.date_completed)}</td>
             <td class="border border-dark"><button class="deleteTask btn btn-danger"> Delete </button></td>
         </tr>
         `)
@@ -81,12 +83,15 @@ function postTask(){
 //post request
 function changeCompletionStatus(){
     console.log('complete button working');
+    let completeDate = captureCompleteDate();
     let idToUpdate = $(this).parent().parent().data().id;
     console.log(idToUpdate);
     $.ajax({
         method: 'PUT',
-        url: `/tasks/${idToUpdate}` 
-    }).then((res)=>{
+        url: `/tasks/${idToUpdate}`,
+        data: {date_completed: completeDate} 
+    })
+    .then((res)=>{
         getAndRenderTasks();
     })
     .catch((err)=>{
@@ -129,16 +134,43 @@ function disableIfComplete (task){
 
 //reformat sql date function 
 function removeTime(SQLdate){
+    if (SQLdate === null){
+        return 'task not complete'
+    } else {
     let newDate = '';
     for (let i = 0; i < 10; i++){
         newDate += SQLdate[i];
     }
     return newDate;
-} //find a way to make the date look nicer 
+    }
+} //
+
+
 
 //clear inputs
 function clearInputs(){
     $('#dateInput').val('');
     $('#freqInput').val('');
     $('#discInput').val('');
+}
+
+
+function captureCompleteDate(){
+    let newDate = formatDate(new Date());
+    return newDate;
+}
+
+//capture and format date
+//got code from https://bobbyhadz.com/blog/javascript-format-date-dd-mm-yyyy
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+return [
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+    date.getFullYear(),
+].join('-');
 }
