@@ -39,7 +39,7 @@ function renderTasks(array){
             <td>${item.freq}</td>
             <td>${item.task}</td>
             <td>${item.complete}</td>
-            <td><button class="markComplete"> ✔️ </button></td>
+            <td><button class="markComplete rounded-circle"> ✔️ </button></td>
             <td><button class="deleteTask"> Delete </button></td>
         </tr>
         `)
