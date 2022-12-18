@@ -39,13 +39,30 @@ taskRouter.post('/', (req,res) => {
         res.sendStatus(201);
     })
     .catch((dbErr)=>{
-        console.log('error in POST route');
+        console.log('error in POST route', dbErr);
         res.sendStatus(500);
     })
 })
 
 // PUT //
-
+taskRouter.put('/:id', (req,res) => {
+    console.log('in PUT route');
+    let idToUpdate = req.params.id;
+    let sqlQuery = `
+    UPDATE "tasks"
+    SET "complete" = 'Y'
+    WHERE "id" = $1;
+    `
+    let sqlValues = [idToUpdate];
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes) => {
+        res.sendStatus(200);
+    })
+    .catch((dbErr) => {
+        console.log('error in PUT route', dbErr);
+        res.sendStatus(500);
+    })
+})
 
 
 // DELETE //
