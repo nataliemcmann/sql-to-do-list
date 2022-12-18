@@ -66,6 +66,23 @@ taskRouter.put('/:id', (req,res) => {
 
 
 // DELETE //
+taskRouter.delete('/:id', (req,res) => {
+    console.log('in DELETE route');
+    let idToDelete = req.params.id;
+    let sqlQuery = `
+    DELETE FROM "tasks"
+    WHERE "id" = $1;
+    `
+    let sqlValues = [idToDelete];
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes) => {
+        res.sendStatus(200);
+    })
+    .catch((dbErr) => {
+        console.log('error in DELETE route', dbErr);
+        res.sendStatus(500);
+    })
+})
 
 //export router
 module.exports = taskRouter;

@@ -92,7 +92,19 @@ function changeCompletionStatus(){
 
 function deleteTaskFromDatabase(){
     console.log('delete button working');
-}
+    let idToDelete = $(this).parent().parent().data().id;
+    console.log(idToDelete);
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${idToDelete}` 
+    }).then((res)=>{
+        getAndRenderTasks();
+    })
+    .catch((err)=>{
+        console.log('error in DELETE request', err);
+    })
+    }
+
 
 //conditional render for completed tasks
 //should include a statement that looks something like this
