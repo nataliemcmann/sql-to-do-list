@@ -15,7 +15,11 @@ body {
     background: url("busy-bee.png") 0 0 repeat;
     animation: play 0.5s steps(2) infinite;
     background-repeat: center;
-}    
+} 
+
+.left {
+    transform: rotateY(180deg);
+}
 
 @keyframes play{
     100% {background-position: 0 -120px;}
@@ -36,15 +40,21 @@ h1{
 }
 
 .userInputs {
-background: rgb(253,227,33);
-background: linear-gradient(90deg,
-rgba(253,227,33,1) 0%, 
-rgba(247,235,145,1) 28%, 
-rgba(244,244,244,1) 75%);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgb(253,227,33);
+    background: linear-gradient(90deg,
+    rgba(253,227,33,1) 0%, 
+    rgba(247,235,145,1) 28%, 
+    rgba(244,244,244,1) 75%);
 }
 
 #discInput {
-    width: 30%;
+    width: 50%;
+}
+
+#taskSubmit {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
 }
 
 table {
@@ -57,10 +67,12 @@ thead, th {
     padding: 1%;
     background-color: #2e2c2f;
     color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 tbody, td{
     padding: 1%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .to-do-task {
