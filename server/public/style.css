@@ -1,0 +1,11 @@
+* {
+    outline: blue solid 1px;
+}
+
+.to-do-task {
+    background-color: #f3e2eb;
+}
+
+.finished-task {
+    background-color: #ecfee8;
+}

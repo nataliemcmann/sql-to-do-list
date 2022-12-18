@@ -33,7 +33,7 @@ function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
         $('#taskList').append(`
-        <tr class="to-do-task" data-id=${item.id}>
+        <tr ${conditionallyAddTaskClass(item)} data-id=${item.id}>
             <td>${removeTime(item.date)}</td>
             <td>${item.freq}</td>
             <td>${item.task}</td>
@@ -107,11 +107,14 @@ function deleteTaskFromDatabase(){
 
 
 //conditional render for completed tasks
-//should include a statement that looks something like this
-// if (item.complete === 'Y'){
-//     $(this).removeClass('to-do-task');
-//     $(this).addClass('finished-task')
-// }
+function conditionallyAddTaskClass(task){
+if (task.complete === 'Y'){
+    return 'class="finished-task"';
+} else {
+    return 'class="to-do-task"';
+}
+}
+
 
 //reformat sql date function 
 function removeTime(SQLdate){
