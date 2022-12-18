@@ -29,7 +29,6 @@ function getAndRenderTasks(){
 }
 
 //render tasks
-//update to conditional render and add a toggle
 function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
@@ -39,8 +38,10 @@ function renderTasks(array){
             <td>${item.freq}</td>
             <td>${item.task}</td>
             <td>${item.complete}</td>
-            <td><button class="markComplete rounded-circle"> ✔️ </button></td>
-            <td><button class="deleteTask"> Delete </button></td>
+            <td><button 
+            class="markComplete rounded-circle btn btn-success" ${disableIfComplete(item)}>
+            ✓ </button></td>
+            <td><button class="deleteTask btn btn-danger"> Delete </button></td>
         </tr>
         `)
     }
@@ -109,8 +110,7 @@ function deleteTaskFromDatabase(){
     }
 
 
-//conditional render for completed tasks
-//update to conditional render and add a toggle as a stretch goal
+//conditional render background for completed tasks
 function conditionallyAddTaskClass(task){
 if (task.complete === 'Y'){
     return 'class="finished-task"';
@@ -119,6 +119,12 @@ if (task.complete === 'Y'){
 }
 }
 
+//conditional disable complete button if task already complete
+function disableIfComplete (task){
+    if (task.complete === 'Y'){
+        return 'disabled'
+    } 
+}
 
 //reformat sql date function 
 function removeTime(SQLdate){
