@@ -29,6 +29,7 @@ function getAndRenderTasks(){
 }
 
 //render tasks
+//update to conditional render and add a toggle
 function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
@@ -75,6 +76,7 @@ function postTask(){
     })
 }
 
+//post request
 function changeCompletionStatus(){
     console.log('complete button working');
     let idToUpdate = $(this).parent().parent().data().id;
@@ -90,6 +92,7 @@ function changeCompletionStatus(){
     })
     }
 
+//delete request    
 function deleteTaskFromDatabase(){
     console.log('delete button working');
     let idToDelete = $(this).parent().parent().data().id;
@@ -107,6 +110,7 @@ function deleteTaskFromDatabase(){
 
 
 //conditional render for completed tasks
+//update to conditional render and add a toggle as a stretch goal
 function conditionallyAddTaskClass(task){
 if (task.complete === 'Y'){
     return 'class="finished-task"';
