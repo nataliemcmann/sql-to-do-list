@@ -1,13 +1,71 @@
-* {
+/* * {
     outline: blue solid 1px;
+} */
+body {
+    margin: 0;
+    background-color: #fcefb4;
+    text-align: center;
+}
+
+.sprite {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 1em auto;
+    background: url("busy-bee.png") 0 0 repeat;
+    animation: play 0.5s steps(2) infinite;
+    background-repeat: center;
+}    
+
+@keyframes play{
+    100% {background-position: 0 -120px;}
+}
+
+header {
+    margin: 2%;
+}
+
+h1{
+    display: inline-block;
+}
+
+#inputs {
+    margin: 2%;
+}
+
+.userInputs {
+background: rgb(253,227,33);
+background: linear-gradient(90deg,
+rgba(253,227,33,1) 0%, 
+rgba(247,235,145,1) 28%, 
+rgba(244,244,244,1) 75%);
+}
+
+#discInput {
+    width: 30%;
+}
+
+table {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+thead, th {
+    padding: 1%;
+    background-color: #2e2c2f;
+    color: white;
+}
+
+tbody, td{
+    padding: 1%;
 }
 
 .to-do-task {
-    background-color: #f3e2eb;
+    background-color: #ffd400;
 }
 
 .finished-task {
-    background-color: #ecfee8;
+    background-color: white;
 }
 
-/* try using bootstrap */

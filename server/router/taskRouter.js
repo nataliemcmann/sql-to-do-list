@@ -10,7 +10,7 @@ taskRouter.get('/', (req,res)=> {
     console.log('in GET route');
     let sqlQuery = `
     SELECT * FROM "tasks"
-    ORDER BY "date" ASC;
+    ORDER BY "complete" ASC, "date" ASC;
     `;
     pool.query(sqlQuery)
     .then((dbRes) => {

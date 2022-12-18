@@ -29,18 +29,19 @@ function getAndRenderTasks(){
 }
 
 //render tasks
-//update to conditional render and add a toggle
 function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
         $('#taskList').append(`
         <tr ${conditionallyAddTaskClass(item)} data-id=${item.id}>
-            <td>${removeTime(item.date)}</td>
-            <td>${item.freq}</td>
-            <td>${item.task}</td>
-            <td>${item.complete}</td>
-            <td><button class="markComplete"> ✔️ </button></td>
-            <td><button class="deleteTask"> Delete </button></td>
+            <td class="border border-dark">${removeTime(item.date)}</td>
+            <td class="border border-dark">${item.freq}</td>
+            <td class="border border-dark">${item.task}</td>
+            <td class="border border-dark">${item.complete}</td>
+            <td class="border border-dark"><button 
+            class="markComplete rounded-circle btn btn-success" ${disableIfComplete(item)}>
+            ✓ </button></td>
+            <td class="border border-dark"><button class="deleteTask btn btn-danger"> Delete </button></td>
         </tr>
         `)
     }
@@ -61,6 +62,7 @@ function createNewTask(){
 function postTask(){
     console.log('posting to server');
     let newTask = createNewTask();
+    clearInputs();
     // console.log(newTask);
     $.ajax({
         method: 'POST',
@@ -109,8 +111,7 @@ function deleteTaskFromDatabase(){
     }
 
 
-//conditional render for completed tasks
-//update to conditional render and add a toggle as a stretch goal
+//conditional render background for completed tasks
 function conditionallyAddTaskClass(task){
 if (task.complete === 'Y'){
     return 'class="finished-task"';
@@ -119,6 +120,12 @@ if (task.complete === 'Y'){
 }
 }
 
+//conditional disable complete button if task already complete
+function disableIfComplete (task){
+    if (task.complete === 'Y'){
+        return 'disabled'
+    } 
+}
 
 //reformat sql date function 
 function removeTime(SQLdate){
@@ -128,3 +135,10 @@ function removeTime(SQLdate){
     }
     return newDate;
 } //find a way to make the date look nicer 
+
+//clear inputs
+function clearInputs(){
+    $('#dateInput').val('');
+    $('#freqInput').val('');
+    $('#discInput').val('');
+}
