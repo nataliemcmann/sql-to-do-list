@@ -46,14 +46,15 @@ taskRouter.post('/', (req,res) => {
 
 // PUT //
 taskRouter.put('/:id', (req,res) => {
-    console.log('in PUT route');
+    console.log('in PUT route', req.body);
+    let completeDate = req.body.date_completed;
     let idToUpdate = req.params.id;
     let sqlQuery = `
     UPDATE "tasks"
-    SET "complete" = 'Y'
-    WHERE "id" = $1;
-    `
-    let sqlValues = [idToUpdate];
+    SET "complete" = 'Y', "date_completed" = $1
+    WHERE "id" = $2;
+    `;
+    let sqlValues = [completeDate, idToUpdate];
     pool.query(sqlQuery, sqlValues)
     .then((dbRes) => {
         res.sendStatus(200);
