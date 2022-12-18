@@ -16,25 +16,27 @@
 </head>
 <body>
     <header>
+        <div class="sprite"></div>
         <h1> To Do List </h1>
+        <div class="sprite"></div>
     </header>
     <main>
         <section id="inputs">
             <input id="dateInput" type="date" placeholder="date to complete by">
             <input id="freqInput" type="text" placeholder="task frequency">
             <input id="discInput" type="text" placeholder="task description">
-            <button id="taskSubmit"> Submit Task </button>
+            <button class="btn btn-dark" id="taskSubmit"> Submit Task </button>
         </section>
         <section class="text-center" id="taskSection">
-            <table>
-                <thead>
+            <table class="border border-dark">
+                <thead class="border border-dark">
                     <tr>
-                        <th> Date to Complete By </th>
-                        <th> Task Frequency </th>
-                        <th> Task Description </th>
-                        <th> Completion Status </th>
-                        <th> Mark Complete </th>
-                        <th> Remove Task </th>
+                        <th class="border border-dark"> Date to Complete By </th>
+                        <th class="border border-dark"> Task Frequency </th>
+                        <th class="border border-dark"> Task Description </th>
+                        <th class="border border-dark"> Completion Status </th>
+                        <th class="border border-dark"> Mark Complete </th>
+                        <th class="border border-dark"> Remove Task </th>
                     </tr>
                 </thead>
                 <tbody id = "taskList">

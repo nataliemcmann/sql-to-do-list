@@ -1,5 +1,53 @@
-* {
+/* * {
     outline: blue solid 1px;
+} */
+body {
+    margin: 0;
+    background-color: #ced4da;
+}
+
+.sprite {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 1em auto;
+    background: url("busy-bee.png") 0 0 repeat;
+    animation: play 0.5s steps(2) infinite;
+    background-repeat: center;
+}    
+
+@keyframes play{
+    100% {background-position: 0 -120px;}
+}
+
+header {
+    margin: 2%;
+}
+
+h1{
+    display: inline-block;
+}
+
+#inputs {
+    margin: 2%;
+}
+
+#discInput {
+    width: 30%;
+}
+
+table {
+    margin: 2%;
+}
+
+thead, th {
+    padding: 1%;
+    background-color: #2e2c2f;
+    color: white;
+}
+
+tbody, td{
+    padding: 1%;
 }
 
 .to-do-task {
@@ -10,4 +58,3 @@
     background-color: #ecfee8;
 }
 
-/* try using bootstrap */

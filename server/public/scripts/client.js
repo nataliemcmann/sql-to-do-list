@@ -34,14 +34,14 @@ function renderTasks(array){
     for (let item of array){
         $('#taskList').append(`
         <tr ${conditionallyAddTaskClass(item)} data-id=${item.id}>
-            <td>${removeTime(item.date)}</td>
-            <td>${item.freq}</td>
-            <td>${item.task}</td>
-            <td>${item.complete}</td>
-            <td><button 
+            <td class="border border-dark">${removeTime(item.date)}</td>
+            <td class="border border-dark">${item.freq}</td>
+            <td class="border border-dark">${item.task}</td>
+            <td class="border border-dark">${item.complete}</td>
+            <td class="border border-dark"><button 
             class="markComplete rounded-circle btn btn-success" ${disableIfComplete(item)}>
             ✓ </button></td>
-            <td><button class="deleteTask btn btn-danger"> Delete </button></td>
+            <td class="border border-dark"><button class="deleteTask btn btn-danger"> Delete </button></td>
         </tr>
         `)
     }
