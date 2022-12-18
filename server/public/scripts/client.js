@@ -9,6 +9,8 @@ function onReady(){
     // console.log('GO!');
     getAndRenderTasks();
     $('#taskSubmit').on('click', postTask);
+    $('#taskList').on('click', '.markComplete', changeCompletionStatus);
+    $('#taskList').on('click', '.deleteTask', deleteTaskFromDatabase);
 }
 
 //get request
@@ -31,7 +33,7 @@ function renderTasks(array){
     $('#taskList').empty();
     for (let item of array){
         $('#taskList').append(`
-        <tr data-id=${item.id}>
+        <tr class="to-do-task" data-id=${item.id}>
             <td>${removeTime(item.date)}</td>
             <td>${item.freq}</td>
             <td>${item.task}</td>
@@ -72,6 +74,32 @@ function postTask(){
         console.log('POST http request failed', err);
     })
 }
+
+function changeCompletionStatus(){
+    console.log('complete button working');
+    let idToUpdate = $(this).parent().parent().data().id;
+    console.log(idToUpdate);
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${idToUpdate}` 
+    }).then((res)=>{
+        getAndRenderTasks();
+    })
+    .catch((err)=>{
+        console.log('error in PUT request', err);
+    })
+    }
+
+function deleteTaskFromDatabase(){
+    console.log('delete button working');
+}
+
+//conditional render for completed tasks
+//should include a statement that looks something like this
+// if (item.complete === 'Y'){
+//     $(this).removeClass('to-do-task');
+//     $(this).addClass('finished-task')
+// }
 
 //reformat sql date function 
 function removeTime(SQLdate){

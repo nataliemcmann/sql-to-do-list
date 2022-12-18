@@ -19,8 +19,18 @@ INSERT INTO "tasks"
 --select all to render (GET)
 SELECT * FROM "tasks"
     ORDER BY "date" ASC;
+
 --input user data (POST)
+INSERT INTO "tasks"
+    ("date", "freq", "task", "complete")
+    VALUES
+    ($1, $2, $3, $4); 
 
 --update by id (PUT)
+UPDATE "tasks"
+    SET "complete" = 'Y'
+    WHERE "id" = $1;
 
 --delete by id (DELETE)
+DELETE FROM "tasks"
+    WHERE "id" = $1;
